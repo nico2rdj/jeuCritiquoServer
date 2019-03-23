@@ -49,7 +49,10 @@ uploadRouter
     (req, res) => {
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
-      res.json(req.file);
+      console.log(req.file.filename);
+      //res.json(req.file);
+      //res.send({ filename: req.file.filename });
+      res.send(req.file.filename);
     }
   )
   .put(

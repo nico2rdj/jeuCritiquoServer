@@ -44,7 +44,6 @@ uploadRouter
   .post(
     cors.corsWithOptions,
     authenticate.verifyUser,
-    authenticate.verifyAdmin,
     upload.single("myImage"),
     (req, res) => {
       res.statusCode = 200;

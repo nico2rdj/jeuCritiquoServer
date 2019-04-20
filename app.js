@@ -61,6 +61,7 @@ app.use(passport.initialize());
 
 // the gotta be before the authentification
 app.use("/", indexRouter);
+
 app.use("/users", usersRouter);
 
 app.use(express.static(path.join(__dirname, "public")));

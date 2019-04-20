@@ -30,24 +30,19 @@ eventRouter
       .catch(err => next(err));
   })
 
-  .post(
-    cors.corsWithOptions,
-    authenticate.verifyUser,
-    authenticate.verifyAdmin,
-    (req, res, next) => {
-      Events.create(req.body)
-        .then(
-          event => {
-            console.log("Event created ", event);
-            res.statusCode = 200;
-            res.setHeader("Content-Type", "application/json");
-            res.json(event);
-          },
-          err => next(err)
-        )
-        .catch(err => next(err));
-    }
-  )
+  .post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+    Events.create(req.body)
+      .then(
+        event => {
+          console.log("Event created ", event);
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/json");
+          res.json(event);
+        },
+        err => next(err)
+      )
+      .catch(err => next(err));
+  })
 
   .put(
     cors.corsWithOptions,
